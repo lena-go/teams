@@ -2,9 +2,18 @@ import csv
 import datetime
 
 
+class Participate:
+    def __init__(self):
+        self.period : 'datetime'
+
+
 class Meeting:
     def __init__(self):
         self.timeline = [0 for i in range(minutes_of_meeting)]
+        self.participates = []
+
+    def add_participate(self, person: 'Participate'):
+        self.participates.append(person)
 
 
 minutes_of_meeting = 90  # function
