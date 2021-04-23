@@ -1,6 +1,17 @@
 import csv
 import datetime
 
+# import datetime as dt
+# start="09:35:23"
+# end="10:23:00"
+# start_dt = dt.datetime.strptime(start, '%H:%M:%S')
+# end_dt = dt.datetime.strptime(end, '%H:%M:%S')
+# diff = (end_dt - start_dt)
+# diff.seconds/60
+
+def get_minutes_in_period(period: ('datetime', 'datetime')) -> int:
+    pass
+
 
 class Participate:
     def __init__(self, name: str, period: [('datetime', 'datetime')]):
@@ -10,10 +21,10 @@ class Participate:
 
 
 class Meeting:
-    def __init__(self, incorrect_period: 'datetime'):
+    def __init__(self, incorrect_period: ('datetime', 'datetime')):
         self.incorrect_period = incorrect_period
         self.correct_period: ('datetime', 'datetime')
-        self.timeline: [int] = []
+        self.timeline: [int]
         self.participates: ['Participate'] = []
 
     def add_participate(self, person: 'Participate'):
@@ -28,7 +39,8 @@ class Meeting:
         return correct_period
 
     def set_timeline(self):
-        pass
+        minutes = get_minutes_in_period()
+        self.timeline = [0 for i in range(minutes)]
 
     def mark_timeline(self, time):
         pass
