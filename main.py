@@ -1,5 +1,6 @@
 import csv
 import datetime
+from math import ceil
 
 # import datetime as dt
 # start="09:35:23"
@@ -13,7 +14,7 @@ def get_minutes_in_period(period: ('datetime', 'datetime')) -> int:
     pass
 
 
-class Participate:
+class Participant:
     def __init__(self, name: str, period: [('datetime', 'datetime')]):
         self.name = name
         self.period = period
@@ -25,14 +26,14 @@ class Meeting:
         self.incorrect_period = incorrect_period
         self.correct_period: ('datetime', 'datetime')
         self.timeline: [int]
-        self.participates: ['Participate'] = []
+        self.participants: ['Participant'] = []
 
-    def add_participate(self, person: 'Participate'):
-        self.participates.append(person)
+    def add_participate(self, person: 'Participant'):
+        self.participants.append(person)
 
     def get_correct_period(self):
         self.timeline = self.set_timeline()
-        for person in self.participates:
+        for person in self.participants:
             for time in person.period:
                 self.mark_timeline(time)  #does smth. with self.timeline
         correct_period = self.compute_correct_period()
