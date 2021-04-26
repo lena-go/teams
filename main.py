@@ -10,8 +10,8 @@ from math import ceil
 # diff = (end_dt - start_dt)
 # diff.seconds/60
 
-def get_minutes_in_period(period: ('datetime', 'datetime')) -> int:
-    pass
+# def get_minutes_in_period(period: ('datetime', 'datetime')) -> int:
+#     pass
 
 
 class Participant:
@@ -40,7 +40,7 @@ class Meeting:
         return correct_period
 
     def set_timeline(self):
-        minutes = get_minutes_in_period()
+        minutes = (self.incorrect_period[1] - self.incorrect_period[0]).seconds // 60 + 1
         self.timeline = [0 for i in range(minutes)]
 
     def mark_timeline(self, time):
@@ -67,3 +67,9 @@ if __name__ == '__main__':
         teamsreader = csv.reader(csvfile, delimiter='\t')
         for row in teamsreader:
             print(', '.join(row))
+
+    begin = '30.03.2021, 10:21:39'
+    end = '30.03.2021, 11:43:55'
+    met = Meeting((datetime.datetime.strptime(begin, "%d.%m.%Y, %H:%M:%S"),
+                  datetime.datetime.strptime(end, "%d.%m.%Y, %H:%M:%S")))
+    met.set_timeline()
